@@ -1,0 +1,601 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@madhutech92 
+madhutech92
+/
+devops
+Public
+1
+00
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+devops/gitcmds
+@madhutech92
+madhutech92 Create gitcmds
+Latest commit 116b85e 25 seconds ago
+ History
+ 1 contributor
+557 lines (432 sloc)  24.6 KB
+   
+
+
+DEVOPS
+========
+
+Below tutorial learnt under Devops
+=======================
+1: GIT
+2: SVN
+3: JENKINS
+4: ECLIPSE
+5: MAVEN : https://wipro.udemy.com/course/apachemaven2/
+6: THREAD DUMP
+
+LINKS 
+========
+1 : https://www.javaworld.com/article/3123117/open-source-java-projects-jenkins-with-docker-part-1.html
+2 : https://wipro.udemy.com/course/devops-and-continuous-integration-with-jenkins-pipelines/
+3 : https://wipro.udemy.com/course/java-multithreading-concurrency-performance-optimization/
+
+
+
+
+GIT Tutorial
+==============
+
+LINKS:
+====
+1 : https://www.youtube.com/watch?v=cdsMIX9gB94  (with eclipse)
+2 : https://www.vogella.com/tutorials/Git/article.html
+
+Drawback :
+=========
+1 : Drawback of centeralized(svn) or local system is single point of failure 
+
+
+===========
+GIT Installation:
+===============
+Follow instructions given in below link  do only installation
+https://www.javatpoint.com/git-environment-setup
+**********************************************************************************
+
+1 : Git is Created by Linus Tovard(he is same person created Linux kernel)
+2 : GIT --is a Distributed version control system
+SCM:source code management or software control management
+
+Git:Is a distributed version control.Here distributed means repository is distributed among all(i,
+e local repository).
+	Advantage of git is:In centeralized version system,
+all code will commited to central server and if we dont have network then we cannot work.
+	But in distributed system,
+we can commit to local repository an push it once network is up.
+	
+Git hub,
+Git lab and Big bucket all are different
+Read.md : md means mark down
+
+GIT HUB:(navin reddy tutorial)
+=======
+	GITHUB  is web based git repository
+	
+1 : learnt to create repository
+2 : create new branch
+3 : resolve conflicts and merge code : Conflicts occurs ,
+when u have created new branch and sent pull request ,
+now if someone make  master code changes 
+	then while merging pull request will get conflict on same line......so we need to resolve conflict manually and merge..
+
+		Scenerio
+		1 : file x ,
+make changes and create new branch request.
+		2 : file x,
+make changes and commit directly in master
+		3 : Pull request merge,
+then if changes are in same line then will get conflict and need be resolved manually
+4 : Fork:whenever u want to contribute to others projects,
+we need to fork the project make changes and send pull request as usuall...Based on validatation he decides to be merged or not.
+
+GIT TERMINOLOGY:
+===================
+1 : ARTIFICAT : project files are called working artificat
+ 
+GIT UDEMy NOTES
+================
+
+1 : 3 stages of git
+		a)working Directory 
+		b) staging area ->contains all the files that added using git add.Each time git add create new snapshot of those files specified in command
+		c) Working repository/local repository(.git folder in directory)-> it contains all snapshots of commited files
+		d) Remote repository
+
+stages==>modified->staged->commited->pushed
+Download git from https://git-scm.com/
+
+1 : git add command,
+stores a snapshot of the specified files in staging area.
+2 : git commit command ,
+creates new snapshot of the staging area called persisent object(commit object)  and stores in local repository.
+3 : git push command,
+allows u to move files from local repository to remote repository
+4 : git fetch and git pull command,
+ allows u to fetch files from local remote to local repository.
+
+Below are three techniques to create git repository
+1 : from scratch,
+empty folder and execute git init command.this make folder to repository
+2 : for existing project ,
+execute git init command
+3 : From github as i use normal
+
+Fork
+======
+What is fork:It is bascially used when u want to contribute to open source project
+1 : creating new project/downloading existing project.
+2 : forking encourages contribution to outside project.
+3 : Forked project can also be updated.
+ example : search for sample java project and fork it,
+u can see copy in ur github account
+ 
+what is cloning:It is bascially used when u need to make ur own project and others sourcecode no contribution
+ fork and clone are two different meaning
+ clone :means copying github repository to our local machine repository so that we can make our own contribution to code base
+ 
+GIT communication
+====
+1 : local and remote repository can communicated either from ssh or https
+2 : for ssh,
+ keys will be in .ssh of home directory.
+3 : for crypto algorthims the bigger length of keys will cause time to decrypt
+
+
+================================
+
+
+Command Summary resource (Enter GitHub)
+==================
+
+1 : Copying a GitHub repository
+		$ cd <project_directory>
+		$ git clone https://github.com/<user>/<example_project>
+		$ cd example_project
+		$ ls -al
+
+
+2 : 
+
+
+====RealTime Scenerios=========
+1 : If we want to rename file then rename file,
+delete old file,
+tthen add and then commit
+2 : If we want to see commit history of particular file,
+then use git log filename
+3 : Undoing changes,
+suppose say we have commited files so each commit will have commit-id.Head by default points to the branch namme with last commit.
+suppose we need to make code changes in previous commit-id then we need to follow below steps:
+		
+		git log --oneline : check commit history,
+it will have detail
+	a) git checkout <commit-id> : this command switches from the existing branch to detached commit-id branch and have commit history only till that id
+		git log --oneline :check now it will be switched to <commit-id> and will have commit history till given commit-id only 
+	b) make code changes in this detached state and do express commit or add commit and then
+	c) git branch <branchname> :create branch of detached state,
+else ur commit will be lost to see do class 8 lab
+	d) git log --oneline will not show commit history of this branch from master branch like others
+
+4 : if you cloned the remote repository using git clone <url> now copy will  be into local respositroy.but after clone if u need to update cloned project then 
+	use command git pull origin <branch-name>(master):so whenever other developers changes the code u synch ur local repository using this git command
+	
+
+	
+
+
+
+GIT COMMANDS (follow same order to learn)
+==============
+git help :provides all info about command
+git help -a :provide detail list of command options
+git help -g :provides git guide.To access guide then use git help glossary( will take to glossary page of git)
+
+git config --global --list :provides list of configuration 
+git config --global user.name 'pradeep.kathare' (username should have first name and last name seperated by dot)
+git config --global user.email 'pradeepkathare123@gmail.com'
+
+git init : execute this cmmand within the folder to which u need as repository(inside this folder it creates .git folder)
+git init : used to create repository,
+If we execute this command within unrevisioned project,
+then it revisons by creating new .git folder
+git clone https://github.com/pradeepkathare/sample-java-project.git : clones existing remote repository to local 
+
+git status :(default adds --long)This command gives information of working area and staging area .This command is used check  status of repository i,
+e files tracked(staged) in git,
+untracked by git,
+yet to commit etc 
+git status --long :is default behaviour
+git status -s:short info i,
+e it shows modified area in red colour and staging area in green colur here ? indicates file not added,
+M indicates modifed but not commited and A indicated added
+
+
+
+git log :This command provides information of commited snapshot history(not file names)
+git log <filename> : commit history of the file
+git log -n 3 : last 3 commits
+git log --oneline :commit history in one line
+
+git add :this command is to add file from modified state to staging area(staged area).Every time u modify the file u need to add then commit
+		 only added files can be commited.
+git rm --cached <file>:This command is to put back file from tracked state to untracked state i,
+e from staged area back to normal area.
+
+git commit -m "first commit" : all files added will be commited and keep message with -m option
+git commit --message <file> or git commit -m <file> are also used to commit files
+git commit -am :adds and commit files
+
+git branch :shows all branch in the repository.
+git branch <branchName>:creates new branch within repository for given name using master branch
+Note : whenever we create new branch from the parent only that parent will have history commit of child but not his superparents
+
+git checkout <branchname>:switches to given branchName
+git checkout <commit-id>:It switches to commit head to given commit-head
+git checkout <commit-id> <filename>:It actually modifies the file from current state to commit-id state.so when u do changes u have to commit it.
+									suppose u dont 	want to commit then u should use below command to bring modifedstate back to original state.
+									if u want to commit modified file then use git commit command as usual
+git checkout HEAD <file-name>:If u want to bring back(revert) ur modified state of the file to head state then use this command.
+
+git revert HEAD : reverts to head if we dont want any changes which is commited 
+
+git reset :Is a dangerous way to do undo so use git revert
+git reset <filename> :If u unknowingly added file to staging area but need to revert it then use this command.But this command dont make changes in working area,
+means still file have the changes we did
+git reset :it resets all staging area code and makes git to create snapshots from first
+git reset --hard : will reset all the files which are added in to staging area and remove ur local changes as well to match previous commit
+git reset <commit-id>:reset staging area to given commit-id and working area will still have exisiting code.
+git reset <commit-id> --hard : resets both working and staging area to the commit-id specified.
+
+git clean:It is undoable command ,
+It cleans untracked files from working area means before adding to staging area.
+git clean -n :trail cleans.It provides only notification
+git clean -f: force clean the files
+git clean -df:force clean the files and  directories as well from working area
+git clean -f <path>: cleans the files only within the specified path
+.gitignore file : this file maintains all the filenames to be ignored by the git....most possibly will specifiy .class filter to exclude in the packages
+git clean -xf:it cleans the ignored files also.mostly usied in development for removing target folder from git snapshot
+
+git pull : basically like svn update,
+which keeps repository updated 
+git pull origin master : when u cloned project from remote repository,
+if u need to synch if other developers changes then use this command.
+							here origin refers to remote and master to remote master repository
+git push origin master : when u want to push ur changes to remote repository,
+first u need to commit to local repository then use push command else it wont 		.						impact changes in remote repository.
+						origin refers to remote repository and master refers to local repository
+						
+commands for ssh : need to understand more on it.
+
+ssh-keygen -t rsa -b 2048 -C "generating ssh keys"
+eval `ssh-agent -s` :If we dont add agent then we should enter login credentials each time,
+if we are not using passpharse then agent not required
+ssh-add privatekey
+open privatekey.pub file and copy the value.Open github setting ,
+there press add ssh key and paste it.
+ssh -T  git@github.com :opening port https
+
+git remote -v : this tell current connection used either https or ssh
+git remote set-url origin git@github.com:pradeep.kathare/azure-203 : this command to switch from https to ssh
+git remote set-url origin https://github.com/pradeepkathare/azure-203.git  : switches ssh to https
+
+git remote set-url origin https://github.com/pradeepkathare/java-learning-m.git
+
+/d/pradeep/backup-linux/pradeep-backupfolder/backupfolder/pradeep-reference/techii-guide/git/java-learning-m
+
+git diff : this command show difference between working directory and staging area.
+git difftool : this command provides visual aboout differences between the directory.
+install p4merge for windows:this is installer which can be used for gui diff and merge
+git config --global diff.tool p4merge : this is used for configuring p4merge tool with git
+git config --global difftool.p4merge.path "C:/programfiles/perforce/p4merge.exe"
+git config --global difftool.prompt false : avoid prompt everytime.
+git config --global merge.tool p4merge
+git config --global mergetool.p4merge.path <path>
+git config --global mergetool.prompt false
+
+git difftool :once u configure p4merge it shows changes in gui of tool.difference wil be between working area and staging area
+git diff HEAD : shows difference between the commit area and working area.
+git difftool HEAD : diff in gui.
+git diff --cached HEAD : shows difference between staging area and commit area.
+git diff --staged HEAD : same as above
+git difftool --cached HEAD:shows gui difference between staging area and commit area.
+git difftool --staged HEAD : same as above
+git difftool --staged : need to check
+git diff <commit-id> HEAD : diff  between commit-id and HEAD
+git diff HEAD^ HEAD : HEAD^ means(HEAD-1) previous commit-id just down of commit-head
+git diff HEAD~1 HEAD: same as above  HEAD-1
+git diff <commit-id1> <commit-id2>:diff between 2 commits
+git difftool <commit-id> <commit-id2>:diff between 2 commits,
+if there are multiple files then exit it ,
+p4merge opens automatically prompts other changed file
+git difftool -- <filename>:p4merge prompts only one time i,
+e for given file.
+
+git remote -v :tells us current connections betwen local and remote repo.
+git remote add origin <remote-git-url git url fromgithub>:adds remote repository to origin.
+git remote -v :now it will show https 
+git push origin master:pushes master branch to github
+git diff master origin/master:this shows difference between local master branch and remote github /origin/master masteer branch
+git difftool master origin/master:same in gui
+git difftool <master-branch> <feature-branch> : to check difference between master and feature-branch
+
+git log --oneline --decorate --graph --all : to show all branches commit hhistory in decorated and graphical way
+git log stat
+git log -p : gives diff between commits  that made changes
+git log --oneline  --grep="all commit for build version or tticketnumbers"
+
+==merging and branching===
+Branches are just pointers for the commits and not containers
+git branch :only local branches
+git branch -a : provides all the branches from local and remote repository
+git branch -m <branch-name> <rename-branch-name>:rename branch from given branch-name to rename branch
+git branch -d  <branch-name>: deletes the given branch name
+git branch -D <branch-name> : when u create branch from master and make changes and commited the code but unexpectedy u use above delete brnach command then it wont work.it throws error to merge code with the branch.bbut if u need forcefully to delete then use this command git -DEVOPS
+
+git checkout -b <branch-name> <from-branch-name>:creates the branch from the branch-name.It carries commit-history from the branch as well.
+git checkout:same as update 
+
+
+git merge <source-branch>:suppose say u r in master branch and need to merge.Then execute command specifying from which branch to merge.
+git once u merge and delete the merge the git doesnt keep track of commit-histoy of deleted branch.to see do git log
+git merge <source-branch> --no-ff:check output
+		Git merge with -no-ff preserves the commit history but ff doesnt and check outputs
+		Fast forward merge is possible only there is no changes in branch destination
+		git3 way merge or recursive merge.change in branch a,
+then commit and change  in master and commit and now do branch merge then git automatically uses git recursive merge and preserves the log history.
+		
+git conflicts occurs in 3 way merge not in ff merge..i,
+e whenever u say u have 2 branch ,
+u changed and commited same line and file in 2 branches then when u try to merge 2nd branch in master/1st branch u will get conflict.Once u get conflict u use git mergetool <sourcebranch> and there u can reduce conflict from colouring and file naming.
+git creates backup file as .orig while conflict.To avoid this we can do 2 steps.
+	1 : create .gitignore file and add .orig so it get ignored and commit this files...check it by git status
+	2 : or use git config --global mergetool.keepBackup true
+
+GIT Cheery picks :Cherry pick is alternative to git merge.Its not recommended at all.But learn from javat point
+=============
+
+===Commit History  rewriting in Git==
+1 : suppose say u modified 2 files and forgot to commit file 1 then to main same message of the commit u can use below command	
+git commit --amend --noedit : commits files to HEAD but it changes commit-is not commit message of HEAD and there will be still same number of commits as before
+
+Git Rebasing==
+
+1 : suppose say u create branch from master,
+after that branch has 3 commits and new-branch has 2 commits then say we need to rebase like
+	our new-branch have all 3 commits tthen 2 commits of itself then we can rebase it
+	step prerequieste : have branch master and do some 3 commits on top it
+	step1 : create new branch from master 
+	step2: mke some 2 commits in new branch
+	step3 : make some 2 commits in master
+	step 4:go tto new branch and execute git rebase master command and see git log
+	step 5:so now its good to merge for master .go to master branch and git merge new-branch command helps to solve merging problem
+	
+2 : git fetch origin master : fetches from the remote repository of master branch
+	git fetch :is same as above
+	points:
+		1 : fetch before you start ur days work
+		2 : fetch before u push to remote repo
+		3 : fetch often-stay in synch as possible
+	steps : git fetch gets just update to remote repository which in local system and then we should merge as ususal,
+but git fetch will git just update but pull is update and merge and chances of conflicts are more
+		do git pull remote repository,
+check how many branches from git branch -r
+		do git commit in remote repository,
+so it will be ahead of remote origin/master in local machine
+		go git fetch ..it updates commit history of origin/master
+		do git logs --oneline ...check difference in history
+		do git merge to merge with master branch or any other branch
+		
+		
+=====GIT LINKS Important : 
+1 : https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+2 : https://www.git-tower.com/learn/git/ebook/en/desktop-gui/advanced-topics/merge-conflicts/
+3 : https://git-scm.com/downloads/guis
+
+ get checkout -b master omk8deployment
+ git checkout -b  domk8deployment master
+ git checkout -b  Patch-1.52.5 origin/Patch-1.52.5 //to get remote branch
+
+===Real time commands :
+1 : git checkout -b <branchName> <FromBranch> (creates new branch from local branch)
+2 : git branch 
+3 : git push -u origin omk8deployment  //creates new branch in remote and pushes local repo
+4 : git branch -m <new_name> (Rename the local branch by typing)
+5 : git diff
+6  : git diff omk8deployment:C:\\Users\\pradeep.k\\domain-object\\domain-model-metadata-store-repo\\domain-model-metadata-store branch2:path/to/file
+
+7 : git pull 
+git log --branches --not --remotes ==for local commit-history 
+
+git show a6815
+bd3afac8d0a5760fa5788b7f85f43a3798b  ==>to check files commited for that id
+
+git log --oneline ==>gives all commit history
+git reset e65a79e<commit-id> ==> revert  back  local commit to given commit-id
+
+(use "git restore --staged <file>..." to unstage)   ==>stage means ready to commit
+
+
+===git merge
+1 : switch  to branch that needs to be get merged
+2 : execute git merge command to merge from the merge
+
+example : i am switching to master branch and executing git merge command as below
+
+git add –A
+$ git commit –m "Some commit message"
+$ git checkout master
+$ git merge new-branch
+===================================
+use this for git commit with no history
+===
+https://gist.github.com/heiswayi/350e2afda8cece810c0f6116dadbe651
+
+Deleting the .git folder may cause problems in our git repository. If we want to delete all of our commits history, but keep the code in its current state, try this:
+
+# Check out to a temporary branch:
+git checkout --orphan TEMP_BRANCH
+
+# Add all the files:
+git add -A
+
+# Commit the changes:
+git commit -am "Initial commit"
+
+# Delete the old branch:
+git branch -D master
+
+# Rename the temporary branch to master:
+git branch -m master
+
+# Finally, force update to our repository:
+git push -f origin master
+
+
+git cherry-pick <commit-id>  //go to particular branch and do cherry-pick so that it commit only that commit-id
+
+To push the current branch and set the remote as upstream, use (local repo and branch to remote)
+git push --set-upstream {url} master
+git push --set-upstream {url} master
+git push --set-upstream {url} master
+
+few steps :
+--
+1 : create local project
+2 : do git init
+3 : do git add all files
+4 : git commit -ma
+5 : create remote repo using ui
+6 : push local to remote for first time using set-upstream and url of remote repo with branch
+git push --set-upstream <remote_url> <remote_branch_name>
+
+
+9ed0eab
+057e9d7
+++++++++JMETER learning-m
+https://medium.com/@chamikakasun/rest-api-load-testing-with-apache-jmeter-a4d25ea2b7b6
+
+only reports:
+====
+jmeter -g C:\Users\Pradeep.k\Documents\aggregate-10req-ks.csv -o C:\Users\Pradeep.k\Documents\html-report-2  ==>to convert csv to html
+
+run and convert report to html format
+====
+jmeter -n -t Dom.jmx -l C:\Users\Pradeep.k\Documents\ -e -o C:\Users\Pradeep.k\Documents\html-report
+
+
+GIT Tutorial for Knowledge sharing  :
+========
+MODEL 1: Create local repo and push to remote 
+-  
+1 : download git :https://git-scm.com/download/win
+2 : create java project
+3 : Initalize repo using git init  
+4 : git status ,to check current status and make them understand of unstage/stage/commit area
+5 : git diff to see difference in files -->yet to check
+6 : git add to add files to staging area of local repository
+7 : git commit to commit to local repo
+8 : git create remote repo  using cli/azue console(prefered this) and select .gitignore file 
+9 : set our local repo to remote repo using git remote add origin {url}
+
+git remote add origin {URL}
+git push -u origin --all
+
+10 : git branch to check branches 
+11 : git push --set-upstream origin master
+
+/ git push origin main for first time and reset of the times we can just use git push
+
+
+
+{URL}
+
+MODEL 2 : download remote repo to local 
+====
+1 : clone exisiting repo to local using  git clone <url>
+2 : check git status and do git branch -a
+3 : create local-branch from remote branch using command git checkout master
+git checkout remotes/origin/master ,
+4 : make changes and perform git status ,git add/commit/push
+5 : Always do git pull(nothing but svn update) before merge and make sure do git pull daily to keep code update.
+
+
+Model 3 : Branching and merging 
+=====
+ https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+1 : git checkout -b new-feature-branch from master/particular branch =>it will create and switch branch
+2 : git status and git log --oneline to check log history
+3 : make changes in new-feature branch and do git add and commit to that branch
+4 : git switch master to go for master branch and then execute git merge command
+5 : git status and git log --oneline to check log history
+6 : git rebase to keep your history clean and make linear approach
+7 : git push 
+
+
+Model 4 : Pull request 
+----
+1 : https://www.atlassian.com/git/tutorials/making-a-pull-request
+
+
+Model 4 : Git Tools - Stashing and Cleaning
+===
+1 : https://git-scm.com/book/en/v2/Git-Tools-Stashing-and-Cleaning#_git_stashing
+2 : 
+
+Model 5 : Refernces :
+==
+1 : https://docs.microsoft.com/en-us/azure/devops/repos/git/gitworkflow?view=azure-devops
+2 : https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/git-flow/
+3 : https://git-scm.com/book/en/v2
+
+
+
+C:\Users\pradeep.k\trunk-v2\clone-git-learning\git-learning>git log --oneline
+875dcf1 (HEAD -> master) commiting merge conflict
+89ac3e0 (origin/master) Updated pom.xml
+e9d5730 pom.xml changed in master
+6f53053 First commit
+
+STASHING AND CLEANING
+======
+
+==MOSH tutuorial
+1 : git init
+2 : git workflow local folder/staging area/commit area/commit
+3 : git rename using a git add command
+4 : renaming can be done using 
+5 : git mv main.js file1.js and git status and git commit 
+6 : git.ignore file 
+7 : git ls-files from staging area .sometimes we will add target folder to staging in unknowingly but it will be tracked even removing later so remove from git staging area not from working directory using git rm --cached -r target/ command and do git commit
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete
